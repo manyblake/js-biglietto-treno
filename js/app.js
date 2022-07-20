@@ -1,16 +1,17 @@
 const km = prompt(`Inserisci il numero dei km che devi percorrere`);
-const eta = prompt(`Inserisci la tua età`);
+const age = prompt(`Inserisci la tua età`);
 
-const costoBiglietto = km * 0.21;
-const scontoUnder18 = costoBiglietto * 0.2;
-const scontoOver65 = costoBiglietto * 0.4;
+const totalPrice = km * 0.21;
+const discountUnder18 = totalPrice * 0.2;
+const discountOver65 = totalPrice * 0.4;
+const ticketPrice = document.getElementById(`ticket-price`);
 
-if (eta < 18) {
-  const bigliettoScontato = costoBiglietto - scontoUnder18;
-  console.log(bigliettoScontato);
-} else if (eta > 65) {
-  const bigliettoScontato = costoBiglietto - scontoOver65;
-  console.log(bigliettoScontato);
+if (age < 18) {
+  const discountedTicket = totalPrice - discountUnder18;
+  ticketPrice.innerHTML = `${Math.round(discountedTicket * 100) / 100} €`;
+} else if (age > 65) {
+  const discountedTicket = totalPrice - discountOver65;
+  ticketPrice.innerHTML = `${Math.round(discountedTicket * 100) / 100} €`;
 } else {
-  console.log(costoBiglietto);
+  ticketPrice.innerHTML = `${Math.round(totalPrice * 100) / 100} €`;
 }
